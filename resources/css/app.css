@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+[x-cloak] {
+    display: none;
+}
+
+/* @layer components { */
+    .custom-font {
+      @apply font-sans text-xl text-primary; /* Apply Tailwind utilities */
+      font-family: 'Gowun Batang', sans-serif; /* Add your custom font */
+    }
+
+    .order_online {
+      @apply inline-block px-8 py-2 bg-yellow-400 text-white rounded-full transition-all duration-300 border-none;
+    }
+  
+    .order_online:hover {
+      @apply bg-yellow-500; /* Adjust color as needed */
+    }
+
+    .box {
+      @apply flex items-center mt-12 rounded-md p-5 bg-gray-800 text-white;
+    }
+

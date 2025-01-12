@@ -8,5 +8,15 @@ use App\Models\Product;
 
 class ProductController extends Controller
 {
+    public function fetchProducts(Request $request)
+    {
+        $products = Product::all();
+        return response()->json($products);
+    }
 
+    public function show($id)
+    {
+         $product = Product::findOrFail($id); // Fetch the product by ID
+         return view('pages.menu', compact('product')); // Pass product details to the view
+    }
 }

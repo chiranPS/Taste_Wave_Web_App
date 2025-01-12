@@ -10,7 +10,8 @@ use App\Http\Controllers\ProductController;
 Route::get('/reservation', [ReservationController::class, 'create'])->name('reservation.create');
 Route::post('/reservation', [ReservationController::class, 'store'])->name('reservation.store');
 
-
+Route::get('/fetch-products', [ProductController::class, 'fetchProducts'])->name('products.fetch');
+Route::get('/product-details/{id}', [ProductController::class, 'show'])->name('products.show');
 
 route::get('/',[TemplateController::class,'index']);
 route::get('/menu',[TemplateController::class,'index1']);

@@ -29,8 +29,7 @@
   <link href="css/style.css" rel="stylesheet" />
   <!-- responsive style -->
   <link href="css/responsive.css" rel="stylesheet" />
-  <link href="public/css/cart.css" rel="stylesheet" />
-
+  <link href="css/cart.css" rel="stylesheet" type="text/css" />
 
 
 </head>
@@ -136,63 +135,78 @@
       </div>
     </header>
     <!-- end header section -->
-    <div class="cart-container">
-      <table class="cart-table">
-        <thead>
-          <tr>
-            <th>Product</th>
-            <th>Description</th>
-            <th>Qty</th>
-            <th>Price</th>
-            <th>Total</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><div class="product-image" style="background-color: pink;">Product 1</div></td>
-            <td>
-              <div class="product-description">
-                <strong>Product 1</strong>
-                <p>Size : 26</p>
-              </div>
-            </td>
-            <td>
-              <div class="qty-actions">
-                <input type="number" value="1" min="1">
-                <button class="edit-btn">✎</button>
-                <button class="delete-btn">🗑</button>
-              </div>
-            </td>
-            <td>$54.00</td>
-            <td>$54.00</td>
-          </tr>
-          <tr>
-            <td><div class="product-image" style="background-color: lightblue;">Product 2</div></td>
-            <td>
-              <div class="product-description">
-                <strong>Product 2</strong>
-                <p>Size : M</p>
-              </div>
-            </td>
-            <td>
-              <div class="qty-actions">
-                <input type="number" value="2" min="1">
-                <button class="edit-btn">✎</button>
-                <button class="delete-btn">🗑</button>
-              </div>
-            </td>
-            <td>$16.00</td>
-            <td>$32.00</td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="cart-summary">
-        <p><strong>Total Product:</strong> $86.00</p>
-        <p><strong>Total Shipping:</strong> $2.00</p>
-        <p><strong>Total:</strong> $88.00</p>
-      </div>
-    </div>
-
+  <div class="cart-container">
+    <table class="cart-table">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Description</th>
+          <th>Qty</th>
+          <th>Price</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="product-image" style="background-color: pink;">P1</div>
+          </td>
+          <td>
+            <div class="product-description">
+              <strong>Product 1</strong>
+              <p>Size: 26</p>
+            </div>
+          </td>
+          <td>
+            <div class="qty-actions">
+              <input type="number" value="1" min="1">
+              <button class="edit-btn" aria-label="Edit quantity">✎</button>
+              <button class="delete-btn" aria-label="Remove product">🗑</button>
+            </div>
+          </td>
+          <td>$54.00</td>
+          <td>$54.00</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="product-image" style="background-color: lightblue;">P2</div>
+          </td>
+          <td>
+            <div class="product-description">
+              <strong>Product 2</strong>
+              <p>Size: M</p>
+            </div>
+          </td>
+          <td>
+            <div class="qty-actions">
+              <input type="number" value="2" min="1">
+              <button class="edit-btn" aria-label="Edit quantity">✎</button>
+              <button class="delete-btn" aria-label="Remove product">🗑</button>
+            </div>
+          </td>
+          <td>$16.00</td>
+          <td>$32.00</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="cart-summary">
+    <table class="summary-table">
+      <tr>
+        <td><strong>Total Product:</strong></td>
+        <td>$86.00</td>
+      </tr>
+      <tr>
+        <td><strong>Total Shipping:</strong></td>
+        <td>$2.00</td>
+      </tr>
+      <tr>
+        <td><strong>Total:</strong></td>
+        <td class="total-price">$88.00</td>
+      </tr>
+    </table>
+    <button class="checkout-btn">Proceed to Checkout</button>
+  </div>
+</div>
   <!-- footer section -->
   <footer class="footer_section">
     <div class="container">

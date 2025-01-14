@@ -80,6 +80,7 @@ class ProductsResource extends Resource
             Tables\Columns\ImageColumn::make('image')
                   ->disk('public') 
                   ->url(fn($record) => url('storage/'.$record->image)),
+            Tables\Columns\TextColumn::make('description'),
             Tables\Columns\TextColumn::make('product_price'),
             Tables\Columns\TextColumn::make('rating'),
         ])

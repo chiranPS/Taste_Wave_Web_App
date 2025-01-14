@@ -18,6 +18,8 @@ route::get('/menu',[TemplateController::class,'index1']);
 route::get('/book',[TemplateController::class,'index2']);
 route::get('/about',[TemplateController::class,'index3']);
 route::get('/showcart',[CartController::class,'showcart'])->name('pages.showcart');
+
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),

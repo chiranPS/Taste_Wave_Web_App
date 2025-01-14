@@ -204,9 +204,7 @@
           </div>
         </div>
         <div class="col-md-6">
-          <div class="map_container ">
-            <div id="googleMap"></div>
-          </div>
+           <!-- Gallery of photos of branches -->
         </div>
       </div>
     </div>

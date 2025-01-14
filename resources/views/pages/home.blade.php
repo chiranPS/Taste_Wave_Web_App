@@ -329,7 +329,7 @@
   <!-- end about section -->
 
   <!-- book section -->
-  <section class="book_section layout_padding">
+    <section class="book_section layout_padding">
     <div class="container">
       <div class="heading_container">
         <h2>
@@ -339,50 +339,67 @@
       <div class="row">
         <div class="col-md-6">
           <div class="form_container">
-            <form action="">
-              <div>
-                <input type="text" class="form-control" placeholder="Your Name" />
-              </div>
-              <div>
-                <input type="text" class="form-control" placeholder="Phone Number" />
-              </div>
-              <div>
-                <input type="email" class="form-control" placeholder="Your Email" />
-              </div>
-              <div>
-                <select class="form-control nice-select wide">
-                  <option value="" disabled selected>
-                    How many persons?
-                  </option>
-                  <option value="">
-                    2
-                  </option>
-                  <option value="">
-                    3
-                  </option>
-                  <option value="">
-                    4
-                  </option>
-                  <option value="">
-                    5
-                  </option>
+            <!-- Display validation errors -->
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+        <!-- Reservation Form -->
+        @if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+
+        <form action="{{ route('reservation.store') }}" method="POST">
+            @csrf
+            <div class="mb-3">
+                <label for="branch_id" class="form-label">Branch ID</label>
+                <select class="form-control" id="branch_id" name="branch_id" required>
+                    <option value="" disabled selected>Select a branch</option>
+                    @foreach(App\Models\Branch::all() as $branch)  <!-- Querying Branch model directly -->
+                        <option value="{{ $branch->id }}">{{ $branch->branch_location }}</option>
+                    @endforeach
                 </select>
-              </div>
-              <div>
-                <input type="date" class="form-control">
-              </div>
-              <div class="btn_box">
-                <button>
-                  Book Now
-                </button>
-              </div>
-            </form>
+            </div>
+
+            <div class="mb-3">
+                <label for="table_no" class="form-label">Table Number</label>
+                <input type="number" class="form-control" id="table_no" name="table_no" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="customer_contact_no" class="form-label">Customer Contact No</label>
+                <input type="text" class="form-control" id="customer_contact_no" name="customer_contact_no" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="customer_name" class="form-label">Customer Name</label>
+                <input type="text" class="form-control" id="customer_name" name="customer_name" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="date" class="form-label">Reservation Date</label>
+                <input type="date" class="form-control" id="date" name="date" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="time" class="form-label">Reservation Time</label>
+                <input type="time" class="form-control" id="time" name="time" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
           </div>
         </div>
         <div class="col-md-6">
-          <div class="map_container ">
-            <div id="googleMap"></div>
-          </div>
+           <!-- Gallery of photos of branches -->
         </div>
       </div>
     </div>

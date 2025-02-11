@@ -138,7 +138,7 @@ body {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  width: 100%;
+  width: 50%;
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
@@ -146,6 +146,22 @@ body {
   background-color: #218838;
   transform: scale(1.05);
 }
+
+.delivery-options {
+  margin: 20px 0;
+  text-align: left;
+}
+
+.delivery-options label {
+  font-weight: bold;
+}
+
+.delivery-options select {
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
 
 /* Media Queries for Responsiveness */
 

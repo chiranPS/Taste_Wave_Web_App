@@ -122,9 +122,7 @@
                   <i class="fa fa-search" aria-hidden="true"></i>
                 </button>
               </form>
-              <a href="" class="order_online">
-                Order Online
-              </a>
+              <!-- acountname -->
             </div>
           </div>
         </nav>
@@ -133,7 +131,6 @@
     <!-- end header section -->
   </div>
 
-  <!-- book section -->
   <section class="book_section layout_padding">
     <div class="container">
       <div class="heading_container">
@@ -145,66 +142,86 @@
         <div class="col-md-6">
           <div class="form_container">
             <!-- Display validation errors -->
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
+            @if ($errors->any())
+        <div class="alert alert-danger">
+          <ul>
+          @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+      @endforeach
+          </ul>
+        </div>
+      @endif
 
-        <!-- Reservation Form -->
-        @if(session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
-@endif
-
-        <form action="{{ route('reservation.store') }}" method="POST">
-            @csrf
-            <div class="mb-3">
+            <!-- Reservation Form -->
+            @if(session('success'))
+        <div class="alert alert-success">
+          {{ session('success') }}
+        </div>
+      @endif
+            <form action="{{ route('reservation.store') }}" method="POST">
+              @csrf
+              <div class="mb-3">
                 <label for="branch_id" class="form-label">Branch ID</label>
                 <select class="form-control" id="branch_id" name="branch_id" required>
-                    <option value="" disabled selected>Select a branch</option>
-                    @foreach(App\Models\Branch::all() as $branch)  <!-- Querying Branch model directly -->
-                        <option value="{{ $branch->id }}">{{ $branch->branch_location }}</option>
-                    @endforeach
+                  <option value="" disabled selected>Select a branch</option>
+                  @foreach(App\Models\Branch::all() as $branch)  <!-- Querying Branch model directly -->
+            <option value="{{ $branch->id }}">{{ $branch->branch_location }}</option>
+          @endforeach
                 </select>
-            </div>
+              </div>
 
-            <div class="mb-3">
-                <label for="table_no" class="form-label">Table Number</label>
-                <input type="number" class="form-control" id="table_no" name="table_no" required>
-            </div>
+              <div class="mb-3">
+                <label for="table_no" class="form-label" >Table Number</label>
+                <input type="number" class="form-control" id="table_no" name="table_no" min="1" max="2" required>
+              </div>
 
-            <div class="mb-3">
+              <div class="mb-3">
                 <label for="customer_contact_no" class="form-label">Customer Contact No</label>
                 <input type="text" class="form-control" id="customer_contact_no" name="customer_contact_no" required>
-            </div>
+              </div>
 
-            <div class="mb-3">
+              <div class="mb-3">
                 <label for="customer_name" class="form-label">Customer Name</label>
                 <input type="text" class="form-control" id="customer_name" name="customer_name" required>
-            </div>
+              </div>
 
-            <div class="mb-3">
+              <div class="mb-3">
                 <label for="date" class="form-label">Reservation Date</label>
-                <input type="date" class="form-control" id="date" name="date" required>
-            </div>
+                <input type="date" class="form-control" id="date" name="date" min="<?php echo date('Y-m-d'); ?>"
+                  required>
+              </div>
 
-            <div class="mb-3">
+              <div class="mb-3">
                 <label for="time" class="form-label">Reservation Time</label>
-                <input type="time" class="form-control" id="time" name="time" required>
-            </div>
+                <?php
+                // Define the time range in the correct format
+                $min_time = '08:00';
+                $max_time = '18:00';
+    ?>
+                <input type="time" class="form-control" id="time" name="time" min="<?php echo $min_time; ?>"
+                  max="<?php echo $max_time; ?>" required>
+                <script>
+                  // JavaScript fallback to ensure the time range is respected
+                  document.getElementById('time').addEventListener('input', function () {
+                    const inputTime = this.value;
+                    const minTime = '<?php echo $min_time; ?>';
+                    const maxTime = '<?php echo $max_time; ?>';
 
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+                    if (inputTime < minTime || inputTime > maxTime) {
+                      alert('Please select a time between 08:00 and 18:00.');
+                      this.value = ''; // Clear the invalid selection
+                    }
+                  });
+                </script>
+              </div>
+
+
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
           </div>
         </div>
         <div class="col-md-6">
-           <!-- Gallery of photos of branches -->
+          <!-- Gallery of photos of branches -->
         </div>
       </div>
     </div>

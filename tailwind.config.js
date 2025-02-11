@@ -18,9 +18,12 @@ export default {
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                dancingscript: ["'Dancing Script'", 'cursive'],
             },
         },
     },
 
     plugins: [forms, typography],
+
+      
 };

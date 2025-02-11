@@ -44,7 +44,7 @@
         <nav class="navbar navbar-expand-lg custom_nav-container ">
           <a class="navbar-brand" href="/">
             <span>
-              Feane
+              Taste Wave Restaurant
             </span>
           </a>
 
@@ -152,9 +152,7 @@
                   <i class="fa fa-search" aria-hidden="true"></i>
                 </button>
               </form>
-              <a href="" class="order_online">
-                Order Online
-              </a>
+              <!-- acountname -->
             </div>
           </div>
         </nav>

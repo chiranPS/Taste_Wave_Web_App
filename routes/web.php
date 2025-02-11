@@ -1,10 +1,14 @@
 <?php
 
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TemplateController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\OnlineOrderController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\FeedbackController;
 
 
 Route::get('/reservation', [ReservationController::class, 'create'])->name('reservation.create');
@@ -18,6 +22,7 @@ route::get('/menu',[TemplateController::class,'index1']);
 route::get('/book',[TemplateController::class,'index2']);
 route::get('/about',[TemplateController::class,'index3']);
 route::get('/showcart',[CartController::class,'showcart'])->name('pages.showcart');
+route::get('feedback',[TemplateController::class,'feedback'])->name('pages.feedback');
 
 
 Route::middleware([
@@ -29,3 +34,12 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+route::post('/addcart/{id}',[CartController::class,'addcart']);
+Route::get('/delete/{id}', [CartController::class, 'deletecart']);
+Route::post('/api/online-orders', [OnlineOrderController::class, 'store'])->name('online-orders.store');
+Route::get('myorders', [OrderController::class,'myorders']);
+
+//firebase route
+Route::post('Add-feedback', [FeedbackController::class,'store']);
+

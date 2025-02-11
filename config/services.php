@@ -35,4 +35,9 @@ return [
         ],
     ],
 
+    'firebase' => [
+        'database_url' => env('FIREBASE_DATABASE_URL'),
+        'secret' => env('FIREBASE_SECRET'),
+    ],
+
 ];

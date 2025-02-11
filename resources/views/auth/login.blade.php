@@ -44,4 +44,22 @@
             </div>
         </form>
     </x-authentication-card>
+    <script>
+        document.querySelector('form').addEventListener('submit', function(event){
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            axios.post('api/login',{
+                email: email,
+                password: password
+            })
+            .then(response => {
+                localStorage.setItem('authToken', response.data.token);
+            })
+            .catch(error => {
+                console.error('login failed', error);
+                alert('Invalid login creds');
+            })
+        });
+    </script>
 </x-guest-layout>

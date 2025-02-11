@@ -21,9 +21,12 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
 
   <!--owl slider stylesheet -->
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
   <!-- nice select  -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css" integrity="sha512-CruCP+TD3yXzlvvijET8wV5WxxEh5H8P4cmz0RFbKK6FlZ2sYl3AEsKlLPHbniXKSrDdFewhbmBK5skbdsASbQ==" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css"
+    integrity="sha512-CruCP+TD3yXzlvvijET8wV5WxxEh5H8P4cmz0RFbKK6FlZ2sYl3AEsKlLPHbniXKSrDdFewhbmBK5skbdsASbQ=="
+    crossorigin="anonymous" />
   <!-- font awesome style -->
   <link href="css/font-awesome.min.css" rel="stylesheet" />
 
@@ -42,100 +45,81 @@
     </div>
     <!-- header section strats -->
     <header class="header_section">
-      <div class="container">
-        <nav class="navbar navbar-expand-lg custom_nav-container ">
-          <a class="navbar-brand" href="/">
-            <span>
-              Taste Wave Restaurant
-            </span>
-          </a>
-
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class=""> </span>
-          </button>
-
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav  mx-auto ">
-              <li class="nav-item active">
-                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/menu">Menu</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/about">About</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/book">Book Table</a>
-              </li>
-            </ul>
-            <div class="user_option">
-            <div class="dropdown">
-    <a href="#" class="user_link dropdown-toggle" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-        <i class="fa fa-user" aria-hidden="true"></i>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="userDropdown">
-        @guest
-            <!-- If the user is not logged in, show login and register links -->
-            <li><a class="dropdown-item" href="{{ route('login') }}">Login</a></li>
-            <li><a class="dropdown-item" href="{{ route('register') }}">Sign Up</a></li>
-        @else
-            <!-- If the user is logged in, show dashboard and logout links -->
-            <li><a class="dropdown-item" href="{{ route('dashboard') }}">Dashboard</a></li>
-            <li>
+  <div class="container">
+    <nav class="navbar navbar-expand-lg custom_nav-container">
+      <a class="navbar-brand" href="/">
+        <span>Taste Wave Restaurant</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class=""> </span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/menu">Menu</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/book">Book Table</a>
+          </li>
+        </ul>
+        <div class="user_option">
+          @auth
+          <div class="dropdown">
+            <a href="#" class="user_link dropdown-toggle" id="userDropdown" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              <i class="fa fa-user" aria-hidden="true"></i>
+              <span>{{ Auth::user()->name }}</span>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="userDropdown">
+              <li><a class="dropdown-item" href="{{ route('dashboard') }}">Dashboard</a></li>
+              <li>
                 <a class="dropdown-item" href="{{ route('logout') }}"
                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                    Logout
+                  <span>Logout</span>
                 </a>
-            </li>
-            <!-- Logout form -->
+              </li>
+            </ul>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                @csrf
+              @csrf
             </form>
-        @endguest
-    </ul>
-</div>
-              @if(Auth::check())
-              <a class="cart_link" href="{{ url('/showcart') }}">
-                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
-                  <g>
-                    <g>
-                      <path d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
-                   c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
-                    </g>
-                  </g>
-                  <g>
-                    <g>
-                      <path d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48
-                   C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064
-                   c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4
-                   C457.728,97.71,450.56,86.958,439.296,84.91z" />
-                    </g>
-                  </g>
-                  <g>
-                    <g>
-                      <path d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296
-                   c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
-                    </g>
-                  </g>
-                  
-                </svg>
-              </a>
-              @endif
-              <form class="form-inline">
-                <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
-                  <i class="fa fa-search" aria-hidden="true"></i>
-                </button>
-              </form>
-              <a href="" class="order_online">
-                Order Online
-              </a>
-            </div>
           </div>
-        </nav>
+          <a class="cart_link" href="{{ url('/showcart') }}">
+            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 456.029 456.029">
+              <g><g><path d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248 c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" /></g></g>
+              <g><g><path d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48 C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064 c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4 C457.728,97.71,450.56,86.958,439.296,84.91z" /></g></g>
+              <g><g><path d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296 c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" /></g></g>
+            </svg>
+            <span>Cart[{{$count}}]</span>
+          </a>
+          @else
+          <a class="nav-link"  href="{{ route('login') }}"><span class="login">Login</span></a>
+          <a class="nav-link"  href="{{ route('register') }}"><span class="login">Sign Up</span></a>
+          @endauth
+          <form class="form-inline">
+            <button class="btn my-2 my-sm-0 nav_search-btn" type="submit">
+              <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+          </form>
+        </div>
       </div>
-    </header>
+    </nav>
+  </div>
+</header>
+
     <!-- end header section -->
+    @if(session('message'))
+    <div class="alert alert-success alert-dismissible fade show mb-2" role="alert">
+        {{ session('message') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    @endif
     <!-- slider section -->
     <section class="slider_section ">
       <div id="customCarousel1" class="carousel slide" data-ride="carousel">
@@ -146,10 +130,11 @@
                 <div class="col-md-7 col-lg-6 ">
                   <div class="detail-box">
                     <h1>
-                    Ride the Flavor Wave at Taste Wave Restaurant
+                      Ride the Flavor Wave at Taste Wave Restaurant
                     </h1>
                     <p class="custom-font">
-                    At Taste Wave Restaurant, enjoy a unique dining experience with fresh ingredients, bold flavors, and a diverse menu that blends tradition with innovation, all in a warm and welcoming atmosphere.
+                      At Taste Wave Restaurant, enjoy a unique dining experience with fresh ingredients, bold flavors,
+                      and a diverse menu that blends tradition with innovation, all in a warm and welcoming atmosphere.
                     </p>
                     <div class="btn-box">
                       <a href="" class="order_online">
@@ -187,7 +172,9 @@
                   <span>20%</span> Off
                 </h6>
                 <a href="" class>
-                  Order Now <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
+                  Order Now <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029"
+                    style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
                     <g>
                       <g>
                         <path d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
@@ -208,7 +195,7 @@
                      c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
                       </g>
                     </g>
-    
+
                   </svg>
                 </a>
               </div>
@@ -227,7 +214,9 @@
                   <span>15%</span> Off
                 </h6>
                 <a href="">
-                  Order Now <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
+                  Order Now <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029"
+                    style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
                     <g>
                       <g>
                         <path d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
@@ -248,7 +237,7 @@
                      c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
                       </g>
                     </g>
-                    
+
                   </svg>
                 </a>
               </div>
@@ -262,36 +251,36 @@
   <!-- end offer section -->
 
   <!-- food section -->
- 
-  <section class="food_section layout_padding-bottom">
-  <div class="container">
-    <div class="heading_container heading_center">
-      <h2>
-        Our Menu
-      </h2>
-    </div>
 
-    <ul class="filters_menu">
-      <li class="active" data-filter="*">All</li>
-      <li data-filter=".burger">Burger</li>
-      <li data-filter=".pizza">Pizza</li>
-      <li data-filter=".pasta">Pasta</li>
-      <li data-filter=".beverages">Beverages</li>
-      <li data-filter=".kottu">Kottu</li>
-      <li data-filter=".friedrice">Fried Rice</li>
-    </ul>
-    <div class="filters-content">
-      <div class="row grid" style="display: flex; flex-wrap: wrap; gap: 20px;">
-        @include('ProductSection.products')
+  <section class="food_section layout_padding-bottom">
+    <div class="container">
+      <div class="heading_container heading_center">
+        <h2>
+          Our Menu
+        </h2>
+      </div>
+
+      <ul class="filters_menu">
+        <li class="active" data-filter="*">All</li>
+        <li data-filter=".burger">Burger</li>
+        <li data-filter=".pizza">Pizza</li>
+        <li data-filter=".pasta">Pasta</li>
+        <li data-filter=".beverages">Beverages</li>
+        <li data-filter=".kottu">Kottu</li>
+        <li data-filter=".friedrice">Fried Rice</li>
+      </ul>
+      <div class="filters-content">
+        <div class="row grid" style="display: flex; flex-wrap: wrap; gap: 20px;">
+          @include('ProductSection.products')
+        </div>
+      </div>
+      <div class="btn-box">
+        <a href="">
+          View More
+        </a>
       </div>
     </div>
-    <div class="btn-box">
-      <a href="">
-        View More
-      </a>
-    </div>
-  </div>
-</section>
+  </section>
 
 
   <!-- end food section -->
@@ -315,7 +304,10 @@
               </h2>
             </div>
             <p>
-              We are Taste Wave, a passionate team dedicated to creating unforgettable dining experiences. Our mission is to bring people together through innovative cuisine, exceptional service, and a warm atmosphere. We celebrate diverse flavors and culinary traditions, crafting each dish with love and attention to detail. Join us on a journey of taste that transcends the ordinary!
+              We are Taste Wave, a passionate team dedicated to creating unforgettable dining experiences. Our mission
+              is to bring people together through innovative cuisine, exceptional service, and a warm atmosphere. We
+              celebrate diverse flavors and culinary traditions, crafting each dish with love and attention to detail.
+              Join us on a journey of taste that transcends the ordinary!
             </p>
             <a href="">
               Read More
@@ -325,11 +317,9 @@
       </div>
     </div>
   </section>
-
   <!-- end about section -->
-
   <!-- book section -->
-    <section class="book_section layout_padding">
+  <section class="book_section layout_padding">
     <div class="container">
       <div class="heading_container">
         <h2>
@@ -340,72 +330,115 @@
         <div class="col-md-6">
           <div class="form_container">
             <!-- Display validation errors -->
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-
-        <!-- Reservation Form -->
-        @if(session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
-@endif
-
-        <form action="{{ route('reservation.store') }}" method="POST">
-            @csrf
-            <div class="mb-3">
+            @if ($errors->any())
+        <div class="alert alert-danger">
+          <ul>
+          @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+      @endforeach
+          </ul>
+        </div>
+      @endif
+            <!-- Reservation Form -->
+      @if(session('success'))
+        <div class="alert alert-success">
+          {{ session('success') }}
+        </div>
+      @endif
+            <form action="{{ route('reservation.store') }}" method="POST">
+              @csrf
+              <div class="mb-3">
                 <label for="branch_id" class="form-label">Branch ID</label>
                 <select class="form-control" id="branch_id" name="branch_id" required>
-                    <option value="" disabled selected>Select a branch</option>
-                    @foreach(App\Models\Branch::all() as $branch)  <!-- Querying Branch model directly -->
-                        <option value="{{ $branch->id }}">{{ $branch->branch_location }}</option>
-                    @endforeach
+                  <option value="" disabled selected>Select a branch</option>
+                  @foreach(App\Models\Branch::all() as $branch)  <!-- Querying Branch model directly -->
+            <option value="{{ $branch->id }}">{{ $branch->branch_location }}</option>
+          @endforeach
                 </select>
-            </div>
+              </div>
 
-            <div class="mb-3">
-                <label for="table_no" class="form-label">Table Number</label>
-                <input type="number" class="form-control" id="table_no" name="table_no" required>
-            </div>
+              <div class="mb-3">
+                <label for="table_no" class="form-label" >Table Number</label>
+                <input type="number" class="form-control" id="table_no" name="table_no" min="1" max="2" required>
+              </div>
 
-            <div class="mb-3">
+              <div class="mb-3">
                 <label for="customer_contact_no" class="form-label">Customer Contact No</label>
                 <input type="text" class="form-control" id="customer_contact_no" name="customer_contact_no" required>
-            </div>
+              </div>
 
-            <div class="mb-3">
+              <div class="mb-3">
                 <label for="customer_name" class="form-label">Customer Name</label>
                 <input type="text" class="form-control" id="customer_name" name="customer_name" required>
-            </div>
+              </div>
 
-            <div class="mb-3">
+              <div class="mb-3">
                 <label for="date" class="form-label">Reservation Date</label>
-                <input type="date" class="form-control" id="date" name="date" required>
-            </div>
-
-            <div class="mb-3">
+                <input type="date" class="form-control" id="date" name="date" min="<?php echo date('Y-m-d'); ?>"
+                  required>
+              </div>
+              <div class="mb-3">
                 <label for="time" class="form-label">Reservation Time</label>
-                <input type="time" class="form-control" id="time" name="time" required>
-            </div>
+                <?php
+                // Define the time range in the correct format
+                $min_time = '08:00';
+                $max_time = '18:00';
+                  ?>
+                <input type="time" class="form-control" id="time" name="time" min="<?php echo $min_time; ?>"
+                  max="<?php echo $max_time; ?>" required>
+                <script>
+                  // JavaScript fallback to ensure the time range is respected
+                  document.getElementById('time').addEventListener('input', function () {
+                    const inputTime = this.value;
+                    const minTime = '<?php echo $min_time; ?>';
+                    const maxTime = '<?php echo $max_time; ?>';
 
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+                    if (inputTime < minTime || inputTime > maxTime) {
+                      alert('Please select a time between 08:00 and 18:00.');
+                      this.value = ''; // Clear the invalid selection
+                    }
+                  });
+                </script>
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
           </div>
         </div>
         <div class="col-md-6">
-           <!-- Gallery of photos of branches -->
+        <!-- Gallery of photos of branches -->
         </div>
       </div>
     </div>
   </section>
   <!-- end book section -->
 
+  <!-- customer feed back section -->
+    <section class="customer-reviews">
+        <h2>What Our Customers Say</h2>
+        <div class="reviews-container">
+            @forelse($customerfeedbacks as $key => $item)
+            <div class="review-card">
+                <p class="review-text">{{ $item['feedback']}}</p>
+                <p class="review-author">- <strong>{{ $item['name']}}</strong></p>
+                <p class="review-role">Customer</p>
+            </div>
+            @empty
+            <p>No feedbacks available.</p>
+            @endforelse
+            <!-- Add more review cards here -->
+        </div>
+    </section>
+   <div class="cus-review-section">
+    <div class="review-header">
+        <h1>"Your Feedback Matters – Help Us Improve!"</h1>
+        <p>
+        We’re constantly striving to provide you with the best products and service possible. Your thoughts and feedback are invaluable in helping us improve and serve you better. Please take a moment to share your experience and let us know how we’re doing. We’re eager to hear from you, and your review could make a difference!
+Feel free to tweak this to match your company's tone!
+        </p>
+    </div>
+    <div class="review-btn">
+        <a href="{{ url('/feedback') }}" class="btn btn-primary">Add Review</a>    </div>
+   </div>
   <!-- footer section -->
   <footer class="footer_section">
     <div class="container">
@@ -443,7 +476,7 @@
               Taste Wave Restaurant
             </a>
             <p>
-            Where Flavor Meets Innovation
+              Where Flavor Meets Innovation
             </p>
             <div class="footer_social">
               <a href="">
@@ -484,7 +517,6 @@
     </div>
   </footer>
   <!-- footer section -->
-
   <!-- jQery -->
   <script src="js/jquery-3.4.1.min.js"></script>
   <!-- popper js -->
@@ -496,6 +528,7 @@
   <!-- owl slider -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
   <!-- isotope js -->
   <script src="https://unpkg.com/isotope-layout@3.0.4/dist/isotope.pkgd.min.js"></script>
   <!-- nice select -->
@@ -503,9 +536,9 @@
   <!-- custom js -->
   <script src="js/custom.js"></script>
   <!-- Google Map -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">
-    
-  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
   <!-- End Google Map -->
 
 </body>

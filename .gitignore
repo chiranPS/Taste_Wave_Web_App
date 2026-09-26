@@ -5,6 +5,7 @@
 /public/storage
 /storage/*.key
 /vendor
+/tastewave-c4d33-firebase-adminsdk-fbsvc-ecfcb1f54e.json
 .env
 .env.backup
 .env.production
